@@ -1,0 +1,15 @@
+.python-version
+.vscode/
+.github/
+.git/
+.DS_Store/
+.circleci/config.yml
+.coverage
+.gitignore
+.pytest_cache
+__pycache__
+feda11y.egg-info/
+htmlcov/
+.DS_Store
+env/
+.env

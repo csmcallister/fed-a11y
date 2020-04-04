@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block page_id %}faw{% endblock %}
+{% block title %}FAQ{% endblock %}
+{% block description %}Frequently asked questions on about Section 508 accessibility in the government, how Fed A11y's automated scans measure accessibility, and how to share feedback.{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  
+  <div class="row">
+    <div class="col-sm-3">
+      <nav role="navigation" id="toc" class="sticky-top" style="padding-top: 65px;"></nav>
+  </div>
+  
+  <div class="col-sm-7">
+    <section id="main-content" role="region" aria-labelledby="title">
+      <header>
+        <h1 id="title">Frequently Asked Questions</h1>
+        <p>If you can't find an answer to your question here, feel free to <a class="external-link" href="https://www.github.com/csmcallister/fed-a11y/issues" target="_blank">open an issue on the Fed A11y GitHub repository <i class="fa fa-external-link"></i></a> </p>
+      </header>
+      
+      <h2>What's Section 508?</h2>
+        <p><a class="external-link" href="https://www.access-board.gov/the-board/laws/rehabilitation-act-of-1973#508" target="_blank">Section 508 <i class="fa fa-external-link"></i></a> is a reference to part of the U.S. Federal Rehabilitation Act of 1973 (as amended), and requires that Information and Communication Technology (ICT) procured by Federal government agencies be accessible at "comparable" levels to government employees and members of the public with a disability.</p>
+        <p>On January 18, 2017, the <a class="external-link" href="https://www.access-board.gov/" target="_blank">U.S. Access Board <i class="fa fa-external-link"></i></a> published a <a class="external-link" href="https://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-ict-refresh/final-rule" target="_blank">final rule <i class="fa fa-external-link"></i></a> updating accessibility requirements for ICT covered by Section 508 of the Rehabilitation Act.</p>
+        <p>Section 508 is composed of several paragraphs which describe requirements as they apply to computer hardware and software, electronic content, telecommunications products, and so on. The applicable standard for websites is <a class="external-link" href="https://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-section-508-standards/section-508-standards#22" target="_blank">paragraph 1194.22 <i class="fa fa-external-link"></i></a>. Fed A11y assesses websites against those standards.</p>
+        
+      <h3>Who's In Charge of Web Accessiblity?</h3>
+        <p>The <a class="external-link" href="https://www.gsa.gov/about-us/organization/office-of-governmentwide-policy/information-integrity-and-access" target="_blank">U.S. General Services Administration's Office of Government-wide Policy <i class="fa fa-external-link"></i></a> is tasked under the law to provide technical assistance to help Federal agencies comply with accessibility requirements - and ensure that covered ICT is accessible to, and usable by, individuals with disabilities.</p>
+        <p>The <a class="external-link" href="https://home.dotgov.gov/DotGov" target="_blank">DotGov Program <i class="fa fa-external-link"></i></a>, also a part of the General Services Administration, operates the .gov top-level domain (TLD) and makes it available to US-based government organizations, from federal agencies to local municipalities. At present, <a href="https://home.dotgov.gov/registration/requirements/" target="_blank">their domain requirements <i class="fa fa-external-link"></i></a> do not require applicants to prove the accessibility of their website.</p>
+      
+      <h2>What's Web Accessibility?</h3>
+        <p>Fed A11y focuses on web accessibility, a subset of accessibility that focuses on ensuring that people with different abilities can access, understand, and navigate web content, regardless of how they’re accessing it.</p>
+        <p>Web accessibility is important because the Internet is increasingly the primary gateway to education, employment, government, commerce, healthcare, recreation, and more. In order for the government to provide <strong>equal access</strong> and <strong>equal opportunity</strong> to all of its citizens, Federal government websites must be accessible to everyone.</p></p>
+        <p>An accessible websites accomodates all disabilities that can affect access to the web, including:</p>
+        <ul>
+          <li>Auditory</li>
+          <li>Cognitive</li>
+          <li>Neurological</li>
+          <li>Physical</li>
+          <li>Speech</li>
+          <li>Visual</li>
+        </ul>
+        <p>Web accessibility also benefits people <em>without</em> disabilities. For example:</p>
+        <ul>
+          <li>People using mobile phones, smart watches, smart TVs, and other devices with small screens, different input modes, etc.</li>
+          <li>Older people with changing abilities due to ageing</li>
+          <li>People with “temporary disabilities” such as a broken arm or misplaced glasses</li>
+          <li>People with “situational limitations” such as being in bright sunlight or in an environment where they cannot listen to audio</li>
+          <li>People using a slow Internet connection or who have limited/expensive bandwidth</li>
+        </ul>
+  
+        <p>In short, accessible websites are better websites.</p>
+        
+      <h2>What Domains Do We Scan?</h2>
+        <p>Fed A11y uses the General Service Administration's <a class="external-link" href="https://github.com/GSA/data/tree/master/dotgov-domains" target="_blank">official list of .gov domains <i class="fa fa-external-link"></i></a> as a starting point, focusing on domains owned by Federal agencies in the Executive Branch. This also includes a few domains ending in .fed, .us, .mil, and .us.</p>
+        
+        <p>We then use the following additional sources to discover subdomains that belong to these Federal domains.</p>
+        <ul>
+          <li>The <a class="external-link" href="https://www.analytics.gsa.gov" target="_blank">Digital Analytics Program <i class="fa fa-external-link"></i></a></li>
+          <li>Assorted data from the General Services Administration's <a class="external-link" href="https://www.github.com/gsa/data" target="_blank">Data Repository <i class="fa fa-external-link"></i></a></li>
+        </ul>
+    
+        <p>If you're curious, the script that Fed A11y uses to generate its list of domains can be found in our <a class="external-link" href="https://www.github.com/csmcallister/fed-a11y-scan" target="_blank">GitHub repository <i class="fa fa-external-link"></i></a>.</p>
+    
+      <h2>How Often is the Data Updated?</h2>
+        <p>We update the data roughly twice a month. The last scan date was {{last_scan_date}}.</p>
+        <p>Note, however, that you can always run one-off accessibility scans on a website using the same <a class="external-link" href="https://pa11y.org/" target="_blank">accessibility scan tool <i class="fa fa-external-link"></i></a> that we use.</p>
+    
+        <h3>Why Don't We Update the Data More Frequently?</h3>
+          <p>This is a pet project, and scanning nearly ten thousand domains and hosting a site isn't free!</p>
+          <p>With that said, we'd be happy to run the scans more frequently - everyday even. If you'd like to see this, <a class="external-link" href="https://www.github.com/csmcallister/fed-a11y/issues" target="_blank">open an issue on the Fed A11y GitHub repository <i class="fa fa-external-link"></i></a> and let us know!</p>
+        
+      <h2>How Can I Download The Data?</h2>
+        <p>If you're interested in the accessibility scan results, you have two options:</p>
+        <ul>
+          <li>You can download <strong>all</strong> of the data in either <a href={{ url_for('main.data', ext='json') }}>JSON</a> or <a href={{ url_for('main.data', ext='csv') }}>csv</a> format.</li>
+          <li>Or you can go <a href="{{ url_for('main.analytics') }}">explore the data</a> and then download a subset after filtering down to what you are interested in.</li>
+        </ul>
+        <p>If you're interested in how we created our list of Federal Government websites to scan, you can checkout <a class="external-link" href="https://github.com/csmcallister/fed-a11y-scan#fed-a11y-scan" target="_blank">the GitHub repository for this website's backend <i class="fa fa-external-link"></i></a>.</p>
+        <p>If you're only interested in downloading the list of Federal Government domains that we scan, you can <a class="external-link" href="https://github.com/csmcallister/fed-a11y-scan/blob/master/domains/domains.csv" target="_blank">download a csv here <i class="fa fa-external-link"></i></a>.</p>
+      
+      <h2>Where Can I Send Feedback?</h2>
+        <p>For questions specific to Fed A11y, you can <a class="external-link" href="https://www.github.com/csmcallister/fed-a11y/issues" target="_blank">open an issue on the Fed A11y GitHub repository <i class="fa fa-external-link"></i></a>.</p>	
+        <p>For questions specific to a domain or agency represented in the data, you can likely look up that agency or organization's contact information on the <a class="external-link" href="https://www.usa.gov/federal-agencies" target="_blank">Official USA.gov Website <i class="fa fa-external-link"></i></a>.</p>
+        <p>For questions specific to Section 508, you can <a class="external-link" href="mailto:section.508@gsa.gov" target="_blank">email Section508.gov <i class="fa fa-external-link"></i></a>. If you'd like to notify them of a particular website's accessibility issues, you can find that website in <a href="{{ url_for('main.analytics') }}">our data table</a> and then send them an email with the click of a button after you've expanded the row to see the individual accessibility issues.</p>
+    
+      <h2>How Can I Dispute the Findings?</h2>
+        <p>First, note that Fed A11y scans domains roughly twice a month, so there might be a delay between updates you make to your domain and our site's information.</p>
+        <p>Also keep in mind that automated accessibility testing software isn't perfect.</p>
+        <p>With these facts in mind, if you see a mistake and think that it's attributable to a flaw or oversight in our process, please <a class="external-link" href="https://www.github.com/csmcallister/fed-a11y/issues" target="_blank">open an issue on GitHub</a> and we'll investigate it.</p>
+    </section>	
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/faq.js') }}"></script>
+
+{% endblock %}

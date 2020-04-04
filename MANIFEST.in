@@ -1,0 +1,4 @@
+graft feda11y/static
+graft feda11y/templates
+graft tests
+global-exclude *.pyc

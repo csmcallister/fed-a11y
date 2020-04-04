@@ -1,0 +1,17 @@
+{
+  "name": "@fed-a11y/circleci",
+  "version": "1.0.0",
+  "description": "Pa11y dependency for circleci with fed-a11y",
+  "main": "",
+  "scripts": {
+    "test-pa11y": "./node_modules/.bin/pa11y-ci --config .pa11yci"
+  },
+  "license": "CC0-1.0",
+  "dependencies": {
+    "pa11y-ci": "^2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csmcallister/fed-a11y.git"
+  }
+}

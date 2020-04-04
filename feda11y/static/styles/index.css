@@ -1,0 +1,21 @@
+canvas {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+#donut {
+  position: absolute; 
+}
+
+#line {
+  position: absolute; 
+}
+
+.container-canvas {
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  height: 60vh;
+  width: 60vw;
+}

@@ -1,0 +1,60 @@
+#toolbar {
+    margin: 0;
+  }
+  
+h4 {
+  text-align: center;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+}
+
+th {
+ color: #FCF7F8;
+ background-color: #275DAD;
+}
+
+.modal-header {
+  background-color: #275DAD;
+  color: #CED3DC;
+}
+
+.page-item.disabled .page-link {
+    color:#275DAD;
+    background-color: #FCF7F8;
+    border-color: #CED3DC;
+  }
+
+.page-item .page-link {
+  color:#275DAD;
+  background-color: #FCF7F8;
+  border-color: #CED3DC;
+}
+  
+.page-item.active .page-link{
+  color:#FCF7F8;
+  background-color: #275DAD;
+  border-color: #275DAD;
+}
+
+i.fa.fa-trash {
+  color:#FCF7F8;
+}
+
+.btn-primary {
+  color: #FCF7F8 !important;
+  background-color: #275DAD !important;
+  border-color: #275DAD !important;
+}
+
+.btn-primary.btn-email {
+  color: #FCF7F8 !important;
+  background-color: #343a40 !important;
+  border-color: #275DAD !important;
+}
+
+.modal-backdrop {
+  z-index: -1 !important;
+}

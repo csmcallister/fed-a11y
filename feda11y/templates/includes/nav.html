@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top sticky">
+    <a class="navbar-brand" href="{{ url_for('main.index') }}">
+      <span class="sr-only">Home - Fed A11y</span>
+      <img src="{{ url_for('static', filename='images/favicon.ico') }}" width="30" height="30" alt="508">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        
+        <li {% if request.endpoint == 'main.index' %} class='active' {% endif %}>
+          <a class="nav-link nav" href="{{ url_for('main.index') }}">Fed A11y</a>
+        </li>
+        <li {% if request.endpoint == 'main.about' %} class='active' {% endif %}>
+          <a class="nav-link nav" href="{{ url_for('main.about') }}">About</a>
+        </li>
+        <li {% if request.endpoint == 'main.analytics' %} class='active' {% endif %}>
+            <a class="nav-link nav" href="{{ url_for('main.analytics') }}">Analytics</a>
+        </li>
+        <li {% if request.endpoint == 'main.faq' %} class='active' {% endif %}>
+          <a class="nav-link nav" href="{{ url_for('main.faq') }}">FAQ</a>
+        </li>
+        <li>
+            <a class="nav-link nav" href="https://www.github.com/csmcallister/fed-a11y" target="_blank">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>

@@ -1,0 +1,71 @@
+nav[data-toggle="toc"] {
+  top: 42px;
+}
+
+/* small screens */
+@media (max-width: 768px) {
+  /* override stickyness so that the navigation does not follow scrolling */
+  nav[data-toggle="toc"] {
+    margin-bottom: 42px;
+    position: static;
+  }
+
+  /* don't expand nested items, which pushes down the rest of the page when navigating */
+  nav[data-toggle="toc"] .nav .active .nav {
+    display: none;
+  }
+
+}
+
+nav[data-toggle="toc"] .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #5B616A;
+  }
+nav[data-toggle="toc"] .nav > li > a:hover,
+nav[data-toggle="toc"] .nav > li > a:focus {
+  padding-left: 19px;
+  color: #275DAD;
+  text-decoration: none;
+  background-color: transparent;
+  border-left: 1px solid #275DAD;
+}
+nav[data-toggle="toc"] .nav-link.active,
+nav[data-toggle="toc"] .nav-link.active:hover,
+nav[data-toggle="toc"] .nav-link.active:focus {
+  padding-left: 18px;
+  font-weight: bold;
+  color: #275DAD;
+  background-color: transparent;
+  border-left: 2px solid #275DAD;
+}
+
+/* Nav: second level (shown on .active) */
+nav[data-toggle="toc"] .nav-link + ul {
+  display: none; /* Hide by default, but at >768px, show it */
+  padding-bottom: 10px;
+}
+
+nav[data-toggle="toc"] .nav .nav > li > a {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 30px;
+  font-size: 12px;
+  font-weight: normal;
+}
+nav[data-toggle="toc"] .nav .nav > li > a:hover,
+nav[data-toggle="toc"] .nav .nav > li > a:focus {
+  padding-left: 29px;
+}
+nav[data-toggle="toc"] .nav .nav > li > .active,
+nav[data-toggle="toc"] .nav .nav > li > .active:hover,
+nav[data-toggle="toc"] .nav .nav > li > .active:focus {
+  padding-left: 28px;
+  font-weight: 500;
+}
+
+nav[data-toggle="toc"] .nav-link.active + ul {
+  display: block;
+}

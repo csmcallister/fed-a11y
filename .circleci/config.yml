@@ -1,0 +1,125 @@
+version: 2.1
+
+orbs:
+  aws-s3: circleci/aws-s3@1.0.15
+  heroku: circleci/heroku@1.0.1
+
+jobs:
+  
+  lint:
+    docker:
+      - image: csmcallister/node-pa11y-python
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - dependencies-{{ checksum "requirements.txt" }}
+            - dependencies-
+
+      - run:
+          name: install dependencies
+          command: |
+            sudo python3.7 -m venv env
+            . env/bin/activate
+            sudo pip install -r requirements.txt
+            sudo pip install -e .
+            
+      - save_cache:
+          paths:
+            - ./env
+          key: dependencies-{{ checksum "requirements.txt" }}
+      
+      - run:
+          name: run linter
+          command: |
+            flake8
+  test:
+    docker:
+      - image: csmcallister/node-pa11y-python
+      
+    steps:
+      - checkout
+
+      - restore_cache:
+        keys:
+          - dependencies-{{ checksum "requirements.txt" }}
+          - dependencies-
+
+      - run:
+          name: install dependencies
+          command: |
+            sudo python3.7 -m venv env
+            . env/bin/activate
+            sudo pip install -r requirements.txt
+            sudo pip install -e .
+            
+      - save_cache:
+          paths:
+            - ./env
+          key: dependencies-{{ checksum "requirements.txt" }}
+
+      - run:
+        name: run tests
+        command: |
+          sudo pytest
+
+      - run:
+        name: run pa11y
+        command: |
+          flask run & sleep 5 && sudo npm run test-pa11y
+  
+  deploy:
+    docker:
+      image: circleci/python:3.7.4
+
+    steps:
+      - checkout
+
+      - restore_cache:
+        keys:
+          - dependencies-{{ checksum "requirements.txt" }}
+          - dependencies-
+
+      - run:
+        name: install dependencies
+        command: |
+          python -m venv env
+          . env/bin/activate
+          pip install -r requirements.txt
+
+      - save_cache:
+        paths:
+          - ./env
+        key: dependencies-{{ checksum "requirements.txt" }}
+
+      - aws-s3/copy:
+          from: "s3://${BUCKET_NAME}/data.json"
+          to: "./feda11y/static/data.json"
+
+      - aws-s3/copy:
+          from: "s3://${BUCKET_NAME}/hist.json"
+          to: "./feda11y/static/hist.json"
+
+      - run:
+          name: Deploy Master to Heroku
+          command: |
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+
+          
+
+workflows:
+  version: 2
+  lint-and-test: 
+    jobs:
+      - lint
+      - test:
+          requires:
+            - lint
+      - deploy:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master

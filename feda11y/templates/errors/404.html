@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block page_id %}pagenotfound{% endblock %}
+{% block title %}404{% endblock %}
+{% block description %}404 Page Not Found{% endblock %}
+
+{% block content %}
+
+<section id="main-content" role="region" aria-labelledby="title">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="error-template">
+          <h1>Oops!</h1>
+          <h2>404 Not Found</h2>
+          <div class="error-details">
+              Sorry, but we cannot find the page you requested.
+          </div>
+          <div class="error-actions">
+            <a href="{{ url_for('main.index') }}" class="btn btn-primary btn-lg"><i class="fa fa-home"></i> Take Me Home</a>
+            <a href="https://www.github.com/csmcallister/fed-a11y/issues" class="btn btn-primary btn-lg"><i class="fa fa-github"></i> Open an Issue on GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

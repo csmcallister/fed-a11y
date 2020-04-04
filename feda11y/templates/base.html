@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>{% block title %}{% endblock %} - Fed A11y</title>
+
+    <meta property="og:title" content="{{ self.title() }}" />
+    <meta name="twitter:title" content="{{ self.title() }}" />
+    
+    <meta name="description" content="{% block description %}{% endblock %}">
+    <meta property="og:description" content="{{ self.description() }}" />
+    <meta name="twitter:description" content="{{ self.description() }}" />
+    
+    {% if request.endpoint %}
+      <link rel="canonical" href="{{ url_for(request.endpoint) }}" />
+    {% else %}
+      <link rel="canonical" href="{{ request.url }}" />
+    {% endif %}
+    
+    {% include 'includes/head.html' %}    
+    
+  </head>
+  
+  <body id="{% block page_id %}{% endblock %}" data-spy="scroll" data-target="#toc" data-offset="-60">
+    
+    <a id="skipnav" href="#skip-target" onclick="document.getElementById('skip-target').focus()">Skip to main content</a>
+    {% include 'includes/nav.html' %}
+    
+    <main class="container content pt-5" role="main">
+      <a name="skip-target" id="skip-target" tabindex='-1' href='#' class="sr-only">Start of Main Content</a>
+      {% block content %} {% endblock %}
+    </main>
+    
+    {% include 'includes/footer.html' %} 
+    
+  </body>
+
+</html>

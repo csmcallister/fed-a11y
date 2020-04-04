@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block page_id %}analytics{% endblock %}
+{% block title %}Analytics{% endblock %}
+{% block description %}Analytics for Fed A11y's automated accessibility scan results of US government websites, with options for data download, filter and sort.{% endblock %}
+
+{% block content %}
+<section id="main-content" role="region" aria-labelledby="title">
+  <div class="container-flex">
+    <div class="col-sm text-center">
+      <header>
+        <h1 id="title">Analytics</h1>
+      </header>
+      {% if not group %}
+        <p>Here you can view the most recent accessibility scan results, which were detected on <strong>{{last_scan_date}}</strong>.</p>
+      {% else %}
+        <p>Here you can view the accessibility scan results for {{group}}, which were detected on <strong>{{last_scan_date}}</strong>.</p>
+      {% endif %}
+      <p>Expand a row to view the accessibility issues associated with that website, including a snippet of the HTML context.</p>
+    </div>
+  </div>
+</section>
+
+<section role="region" aria-labelledby="table">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <div class="table-responsive"> 
+          <table
+            aria-label="Table of websites, the organizations they belong to, and their accessibility issues."
+            class="table"
+            id="table"
+            data-filter-control="false"
+            data-detail-formatter="detailFormatter"
+            data-detail-view="true"
+            data-remember-order="true"
+            data-show-export="false"
+            data-search="true"
+            data-search-align="left"
+            data-sort-name="Agency" 
+            data-sort-order="desc"
+            data-toggle="table"
+            data-pagination="true"
+            data-show-search-clear-button="true"
+            data-page-list="[10, 25, 50, 100, 1000, all]"
+            data-response-handler="responseHandler"
+            data-toolbar="#toolbar"
+            data-url="{{ url_for('main.data', agency=agency, org=org, domain=domain, subdomain=subdomain) }}">
+            <thead class="thead-custom">
+              <tr>
+                <th scope="col" data-field="Agency" data-sortable="true" data-filter-control="select">Agency <span class="sr-only">Click to sort</span></th>
+                <th scope="col" data-field="Organization" data-sortable="true" data-filter-control="input">Organization <span class="sr-only">Click to sort</span></th>
+                <th scope="col" data-field="Domain" data-sortable="true" data-filter-control="input">Domain <span class="sr-only">Click to sort</span></th>
+                <th scope="col" data-field="Subdomain" data-sortable="true" data-filter-control="input">Subdomain <span class="sr-only">Click to sort</span></th>
+                <th scope="col" data-field="URL" data-sortable="true" data-filter-control="input">URL <span class="sr-only">Click to sort</span></th>
+                <th scope="col" data-field="numberOfErrors" data-sortable="true" data-filter-control="select">Number of Issues <span class="sr-only">Click to sort</span></th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script src="{{ url_for('static', filename='js/analytics.js') }}"></script>
+
+{% endblock %}
