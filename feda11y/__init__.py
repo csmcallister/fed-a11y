@@ -2,6 +2,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 import os
 
+import boto3
 from flask import Flask, render_template
 import sentry_sdk
 from sentry_sdk.integrations.flask import FlaskIntegration
@@ -10,7 +11,11 @@ from config import Config
 
 if Config.FLASK_ENV == 'production':
     sentry_sdk.init(Config.SENTRY_DSN, integrations=[FlaskIntegration()])
-
+    s3_client = boto3.client('s3')
+    BUCKET = os.environ.get('BUCKET_NAME')
+    s3_client.download_file(BUCKET, 'data.json', 'feda11y/static/data.json')
+    s3_client.download_file(BUCKET, 'hist.json', 'feda11y/static/hist.json')
+    
 
 def page_not_found(e):  # pragma: no cover
     return render_template('errors/404.html'), 404
