@@ -32,5 +32,3 @@ RUN cd Python-3.7.3 && sudo ./configure && sudo make altinstall
 WORKDIR /workspace
 
 RUN sudo python3.7 -m pip install --upgrade pip && sudo rm -rf Python-3.7.3
-
-COPY .circleci/.pa11yci .pa11yci
