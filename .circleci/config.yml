@@ -1,7 +1,6 @@
 version: 2.1
 
 orbs:
-  aws-s3: circleci/aws-s3@1.0.15
   heroku: circleci/heroku@1.0.1
   python: circleci/python@0.2.1
 
@@ -19,14 +18,16 @@ jobs:
   
     steps:
       - checkout
-
       - run:
-          name: flake8
+          name: install-deps
           command: |
             sudo python3.7 -m venv env
             . env/bin/activate
             sudo pip install -r requirements.txt
             sudo pip install -e .
+      - run:
+          name: flake8
+          command: |
             flake8
 
   test:
@@ -34,22 +35,18 @@ jobs:
       
     steps:
       - checkout
-      
-      - aws-s3/copy:
-          from: "s3://${BUCKET_NAME}/data.json"
-          to: "./feda11y/static/data.json"
-
-      - aws-s3/copy:
-          from: "s3://${BUCKET_NAME}/hist.json"
-          to: "./feda11y/static/hist.json"
-      
       - run:
-          name: test
+          name: install-deps
           command: |
             sudo python3.7 -m venv env
             . env/bin/activate
             sudo pip install -r requirements.txt
             sudo pip install -e .
+            printenv > .env
+
+      - run:
+          name: test
+          command: |
             sudo pytest
 
       - run:
@@ -64,12 +61,6 @@ jobs:
       - python/load-cache
       - python/install-deps
       - python/save-cache
-      - aws-s3/copy:
-          from: "s3://${BUCKET_NAME}/data.json"
-          to: "./feda11y/static/data.json"
-      - aws-s3/copy:
-          from: "s3://${BUCKET_NAME}/hist.json"
-          to: "./feda11y/static/hist.json"
       - run:
           name: Deploy Master to Heroku
           command: |

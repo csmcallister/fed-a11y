@@ -1,6 +1,7 @@
 import logging
 from logging.handlers import RotatingFileHandler
 import os
+from os import path
 
 import boto3
 from flask import Flask, render_template
@@ -9,12 +10,22 @@ from sentry_sdk.integrations.flask import FlaskIntegration
 
 from config import Config
 
-if Config.FLASK_ENV == 'production':
-    sentry_sdk.init(Config.SENTRY_DSN, integrations=[FlaskIntegration()])
+if Config.FLASK_ENV != 'development':
     s3_client = boto3.client('s3')
     BUCKET = os.environ.get('BUCKET_NAME')
-    s3_client.download_file(BUCKET, 'data.json', 'feda11y/static/data.json')
-    s3_client.download_file(BUCKET, 'hist.json', 'feda11y/static/hist.json')
+    static_dir = path.join(path.abspath(path.dirname(__file__)), 'static')
+    if not path.exists(path.join(static_dir, 'data.json')):
+        s3_client.download_file(
+            BUCKET,
+            'data.json', 
+            path.join(static_dir, 'data.json'))
+    if not path.exists(path.join(static_dir, 'hist.json')):
+        s3_client.download_file(
+            BUCKET,
+            'hist.json',
+            path.join(static_dir, 'hist.json'))
+    if Config.FLASK_ENV == 'production':
+        sentry_sdk.init(Config.SENTRY_DSN, integrations=[FlaskIntegration()])
     
 
 def page_not_found(e):  # pragma: no cover
@@ -45,7 +56,7 @@ def create_app(config_class=Config):
             app.logger.addHandler(stream_handler)
         
         else:
-            if not os.path.exists('logs'):
+            if not path.exists('logs'):
                 os.mkdir('logs')
             file_handler = RotatingFileHandler(
                 'logs/fed-a11y.log',
