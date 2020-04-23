@@ -58,9 +58,6 @@ jobs:
     executor: deploy-exc
     steps:
       - checkout
-      - python/load-cache
-      - python/install-deps
-      - python/save-cache
       - run:
           name: Deploy Master to Heroku
           command: |
