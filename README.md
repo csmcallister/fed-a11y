@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/csmcallister/fed-a11y.svg?style=svg)](https://circleci.com/gh/csmcallister/fed-a11y)
+
 # Fed A11y
 
 Automated accessibility testing of U.S. Federal Government websites.
@@ -52,7 +54,7 @@ coverage report
 
 ## Start the App
 
-To start the app in development mode, set the following environment variables or create a `.flaskenv` file with the following contents:
+To start the app in development mode, set the following environment variables or create a `.env` file with the following contents:
 
 ```bash
 FLASK_APP=main.py
@@ -86,7 +88,7 @@ Go to `http://127.0.0.1:5000/` and check it out.
 We use Heroku, which makes it as simple as:
 
 ```bash
-git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+git push -f https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
 ```
 
 where you've made a Heroku account and set the `HEROKU_API_KEY` and `HEROKU_APP_NAME` environment variables beforehand.
@@ -101,6 +103,8 @@ heroku local web
 
 Just like the [backend to this site](https://github.com/csmcallister/fed-a11y-scan/), we use [pa11y](https://github.com/pa11y/pa11y) to smoke test our site's accessibility. You can run these tests yourself downloading the `pa11y` or `pa11y-ci` tools and then starting the app with `flask run` to give yourself a live endpoint to test.
 
+If you notice any issues, please let us know by [opening an issue](https://github.com/csmcallister/fed-a11y/issues).
+
 ## Contributing
 
 If you'd like to contribute, hop on over to our [contributing docs]((https://github.com/csmcallister/fed-a11y/blob/master/.github/CONTRIBUTING.md)).
@@ -109,4 +113,4 @@ If you've got questions, [open an issue](https://github.com/csmcallister/fed-a11
 
 ## LICENSE
 
-GNU General Public License. See it [here](https://github.com/csmcallister/fed-a11y/blob/master/.github/LICENSE)
+GNU General Public License. See it [here](https://github.com/csmcallister/fed-a11y/blob/master/.github/LICENSE).
