@@ -68,13 +68,17 @@ workflows:
   version: 2
   lint-and-test: 
     jobs:
-      - lint
+      - lint:
+          filters:
+            branches:
+              ignore: master
       - test:
           requires:
             - lint
+          filters:
+            branches:
+              ignore: master
       - deploy:
-          requires:
-            - test
           filters:
             branches:
               only: master
