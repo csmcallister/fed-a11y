@@ -82,3 +82,13 @@ workflows:
           filters:
             branches:
               only: master
+  weekly:
+    triggers:
+      - schedule:
+          cron: "0 6 * * 5"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - deploy
