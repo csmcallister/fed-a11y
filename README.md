@@ -42,7 +42,7 @@ Now make a dummy file for the historical data called `feda11y/static/hist.json` 
 
 This will verify that everything is working as expected:
 
-```
+```bash
 coverage run -m pytest
 ```
 

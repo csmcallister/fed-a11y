@@ -27,11 +27,11 @@
     <meta name="twitter:description" content="{{ self.description() }}" />
     
     {% if request.endpoint %}
-      <link rel="canonical" href="{{ url_for(request.endpoint) }}" />
-      <meta property="og:url" content="{{ url_for(request.endpoint) }}" />
+      <link rel="canonical" href="{{ 'https://feda11y.com' + url_for(request.endpoint) }}" />
+      <meta property="og:url" content="{{ 'https://feda11y.com' + url_for(request.endpoint) }}" />
     {% else %}
-      <link rel="canonical" href="{{ request.url }}" />
-      <meta property="og:url" content="{{ request.url }}" />
+      <link rel="canonical" href="{{ 'https://feda11y.com' + request.url }}" />
+      <meta property="og:url" content="{{ 'https://feda11y.com' + request.url }}" />
     {% endif %}
     
     {% include 'includes/head.html' %}    
