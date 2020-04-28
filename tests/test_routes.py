@@ -43,3 +43,8 @@ def test_extension_handler(ext, expected):
 def test_404(client):
     response = client.get('/thiswill404')
     assert b"404 Not Found" in response.data
+
+
+def test_sitemap(client):
+    response = client.get('/sitemap.xml')
+    assert b"xml" in response.data
