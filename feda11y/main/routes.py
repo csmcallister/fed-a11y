@@ -60,7 +60,7 @@ def faq():
 @bp.route('/sitemap.xml')
 def site_map():
     pages = [p.replace(".html", "") for p in os.listdir('feda11y/templates')]
-    excludes = {'errors', 'includes', 'base.html', 'sitemap.xml'}
+    excludes = {'errors', 'includes', 'base', 'sitemap.xml', 'index'}
     base_url = "https://feda11y.com"
     pages = [f'{base_url}/{p}' for p in pages if p not in excludes]
     return render_template('sitemap.xml', pages=pages, base_url=base_url)
