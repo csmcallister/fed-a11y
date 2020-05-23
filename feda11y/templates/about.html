@@ -17,23 +17,23 @@
     <section id="main-content" role="region" aria-labelledby="title">
       <header>
         <h1 id="title">About Fed A11y</h1>
-          <p>Fed A11y monitors the web accessibility of U.S. Federal Government websites.</p>
-          <p>You can <a href="{{ url_for('main.analytics') }}">explore the data</a> or download it in <a href={{ url_for('main.data', ext='json') }}>JSON</a> or <a href={{ url_for('main.data', ext='csv') }}>csv</a> format.</p>
-          <p>You can report accessibility issues for a website to the relevant government authority via email from right within the <a href="{{ url_for('main.analytics') }}">data table</a>.</p>
-          <p>Finally, you can learn about accessibility and how this site monitors it by reading on and checking out our <a href="{{ url_for('main.faq') }}">FAQ</a>.</p>
+          <p>Fed A11y monitors the web accessibility of U.S. Federal Government websites using automated scanning software.</p>
+          <p>To view the accessibility scan results, you can <a href="{{ url_for('main.analytics') }}">explore the data on this site</a> or download it in <a href={{ url_for('main.data', ext='json') }}>JSON</a> or <a href={{ url_for('main.data', ext='csv') }}>csv</a> format.</p>
+          <p>You can report accessibility issues for a website to the relevant government authority via email from right within <a href="{{ url_for('main.analytics') }}">this site's data table</a>.</p>
+          <p>Finally, you can learn about accessibility - and how this site monitors it - by reading on and checking out our <a href="{{ url_for('main.faq') }}">FAQ</a>.</p>
       </header>
       
       <h2>Web Accesibility</h2>
       
-        <p>Web accessibility is about ensuring that people with different abilities can access, understand, and navigate web content, regardless of how they’re accessing it.</p>
-        <p><a class="external-link" href="https://www.access-board.gov/the-board/laws/rehabilitation-act-of-1973#508" target="_blank">Section 508 of the Federal Rehabilitation Act of 1973 <i class="fa fa-external-link"></i></a> requires the Federal government agencies to produce websites that are accessible at "comparable" levels to government employees and members of the public with a disability.</p>
-        <p><a class="external-link" href="https://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-section-508-standards/section-508-standards#22" target="_blank">Paragraph 1194.22 of the law <i class="fa fa-external-link"></i></a> lays out the accessibility requirements for websites, and those are the standards against which we measure each website.</p>
+        <p>Web accessibility means people with different abilities can access, understand, and navigate web content, regardless of how they’re accessing it.</p>
+        <p><a class="external-link" href="https://www.access-board.gov/the-board/laws/rehabilitation-act-of-1973#508" target="_blank">Section 508 of the Federal Rehabilitation Act of 1973 <i class="fa fa-external-link"></i></a> requires US Federal Government agencies to maintain websites that are accessible at "comparable" levels to government employees and members of the public with a disability.</p>
+        <p>More specifically, <a class="external-link" href="https://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-section-508-standards/section-508-standards#22" target="_blank">Paragraph 1194.22 of the law <i class="fa fa-external-link"></i></a> lays out the accessibility requirements for websites, and those are the standards against which we measure each website.</p>
         
       <h2>Why Accessibility Is Important</h2>
         
         <p>First, citizens should be able to access the government resources that they are entitled to.</p>
         <p>Second, web accessibility is a legal requirement for Federal Agencies.</p>
-        <p>To put this into perspective, consider the follow statistics published by the US Census Bureau in 2012:</p>
+        <p>To put this issue into perspective, consider the follow statistics published by the US Census Bureau in 2012:</p>
         <ul>
           <li>19.9 million Americans (8.2% of the population) have difficulty lifting or grasping, which could impact their usage of a mouse or keyboard.</li>
           <li>8.1 million (3.3%) have a vision impairment, which could require them to use a screen magnifier or a screen reader.</li>
@@ -52,7 +52,7 @@
           <li>Although we can detect the background color and text color by reading a page’s Cascading Style Sheets (CSS), we may not be able to detect the color of an image itself. If dark text is overlayed on a dark background image, we would not be able to measure whether the level of contrast is sufficient.</li>
         </ul>
         <p>Another limitation is that we don't have access to the complete list of .gov websites. We do our best by starting with the <a class="external-link" href="https://github.com/GSA/data/tree/master/dotgov-domains" target="_blank">General Services Administration's official list <i class="fa fa-external-link"></i></a>, but this isn't exhaustive and is additionally prone to typos and inconsistencies in Agency and Organization names.</p>
-        <p>Finally, we do not completely index the websites that we scan. We only scan their home pages.</p>
+        <p>Finally, we do not completely index the websites that we scan. We only scan their home pages. However, we do plan to scan every page on a domain's sitemap sometime soon.</p>
         <p>It is for these reasons that fully assessing a site’s accessibility still requires manual evaluation by an accessibility professional.</p>
       
       <h2>Disclaimers</h3>
