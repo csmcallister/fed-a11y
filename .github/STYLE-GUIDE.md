@@ -51,6 +51,7 @@ For the subject line, we'd prefer it if you prefixed the line with one of these 
  - PERF: Performance improvement
  - CLN: Code cleanup
  - FIX: Fixng small things like typos (similar to CLN)
+ - CON: Changing content within HTML
 
 Here's an example with just a subject line:
 
