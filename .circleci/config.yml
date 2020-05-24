@@ -36,6 +36,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: setup-test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+      - run:
           name: install-deps
           command: |
             sudo python3.7 -m venv env
@@ -47,7 +52,10 @@ jobs:
       - run:
           name: test
           command: |
-            sudo pytest
+            ./cc-test-reporter before-build
+            sudo coverage run -m pytest
+            sudo coverage xml
+            ./cc-test-reporter after-build --debug -t "coverage.py" --exit-code $?
 
       - run:
           name: pa11y
