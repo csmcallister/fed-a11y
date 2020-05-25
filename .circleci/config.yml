@@ -7,18 +7,18 @@ orbs:
 executors:
   test-and-lint-exc:
     machine:
-        image: csmcallister/node-pa11y-python
-        docker_layer_caching: true
-        environment:
-          CI: $CI
-          CIRCLECI: $CIRCLECI
-          CIRCLE_BUILD_NUM: $CIRCLE_BUILD_NUM
-          CIRCLE_BRANCH: $CIRCLE_BRANCH 
-          CIRCLE_SHA1: $CIRCLE_SHA1
+      image: csmcallister/node-pa11y-python
+      docker_layer_caching: true
+      environment:
+        CI: $CI
+        CIRCLECI: $CIRCLECI
+        CIRCLE_BUILD_NUM: $CIRCLE_BUILD_NUM
+        CIRCLE_BRANCH: $CIRCLE_BRANCH 
+        CIRCLE_SHA1: $CIRCLE_SHA1
   deploy-exc:
     machine:
-        image: circleci/python:3.7.4
-        docker_layer_caching: true
+      image: circleci/python:3.7.4
+      docker_layer_caching: true
 
 jobs:
   lint:
