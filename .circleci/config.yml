@@ -35,6 +35,12 @@ jobs:
       
     steps:
       - checkout
+      -run:
+          name: env-test
+          command: |
+            echo $GIT_COMMIT_SHA
+            echo $GIT_BRANCH
+            echo $GIT_COMMITTED_AT
       - run:
           name: setup-test-reporter
           command: |
