@@ -42,6 +42,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: test-env
+          command: echo $CIRCLE_BRANCH
+      - run:
           name: setup-test-reporter
           command: |
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
