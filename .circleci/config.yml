@@ -6,8 +6,9 @@ orbs:
 
 executors:
   test-and-lint-exc:
-    docker:
-      - image: csmcallister/node-pa11y-python
+    machine:
+        image: csmcallister/node-pa11y-python
+        docker_layer_caching: true
         environment:
           CI: $CI
           CIRCLECI: $CIRCLECI
@@ -15,8 +16,9 @@ executors:
           CIRCLE_BRANCH: $CIRCLE_BRANCH 
           CIRCLE_SHA1: $CIRCLE_SHA1
   deploy-exc:
-    docker:
-      - image: circleci/python:3.7.4
+    machine:
+        image: circleci/python:3.7.4
+        docker_layer_caching: true
 
 jobs:
   lint:
@@ -41,9 +43,6 @@ jobs:
       
     steps:
       - checkout
-      - run:
-          name: test-env
-          command: echo $CIRCLE_BRANCH
       - run:
           name: setup-test-reporter
           command: |
