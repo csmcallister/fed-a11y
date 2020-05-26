@@ -1,3 +1,4 @@
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![CircleCI](https://circleci.com/gh/csmcallister/fed-a11y.svg?style=svg)](https://circleci.com/gh/csmcallister/fed-a11y)
 [![Maintainability](https://api.codeclimate.com/v1/badges/9040ccde83fd2a52af20/maintainability)](https://codeclimate.com/github/csmcallister/fed-a11y/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/9040ccde83fd2a52af20/test_coverage)](https://codeclimate.com/github/csmcallister/fed-a11y/test_coverage)
@@ -34,11 +35,13 @@ pip install -e .
 
 [Download a snapshot of the data](https://www.feda11y.com/data) as JSON and place it at `feda11y/static/data.json`.
 
-Now make a dummy file for the historical data called `feda11y/static/hist.json` and put this in it:
+Now make a dummy file for the historical data called `feda11y/static/hist.json` and put something like this in it:
 
 ```json
 [{"2020-03-09": 0.2}, {"2020-03-16": 0.3}, {"2020-03-23": 0.4}, {"2020-03-30": 0.5}]
 ```
+
+These files are normally pulled from cloud storage with each deploy, so it's imperative you recreate them locally before continuing.
 
 ### Run the Tests
 
