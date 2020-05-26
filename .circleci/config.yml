@@ -13,22 +13,6 @@ executors:
       - image: circleci/python:3.7.4
 
 jobs:
-  lint:
-    executor: test-and-lint-exc
-  
-    steps:
-      - checkout
-      - run:
-          name: install-deps
-          command: |
-            sudo python3.7 -m venv env
-            . env/bin/activate
-            sudo pip install -r requirements.txt
-            sudo pip install -e .
-      - run:
-          name: flake8
-          command: |
-            flake8
 
   test:
     executor: test-and-lint-exc
@@ -48,6 +32,11 @@ jobs:
             sudo pip install -r requirements.txt
             sudo pip install -e .
             printenv > .env
+      
+      - run:
+          name: flake8
+          command: |
+            flake8
 
       - run:
           name: test
@@ -76,13 +65,7 @@ workflows:
   version: 2
   lint-and-test: 
     jobs:
-      - lint:
-          filters:
-            branches:
-              ignore: master
       - test:
-          requires:
-            - lint
           filters:
             branches:
               ignore: master
