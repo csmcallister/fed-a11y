@@ -1,7 +1,6 @@
 [![CircleCI](https://circleci.com/gh/csmcallister/fed-a11y.svg?style=svg)](https://circleci.com/gh/csmcallister/fed-a11y)
 [![Maintainability](https://api.codeclimate.com/v1/badges/9040ccde83fd2a52af20/maintainability)](https://codeclimate.com/github/csmcallister/fed-a11y/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/9040ccde83fd2a52af20/test_coverage)](https://codeclimate.com/github/csmcallister/fed-a11y/test_coverage)
-[![Known Vulnerabilities Python](https://snyk.io/test/github/csmcallister/fed-a11y/badge.svg?targetFile=requirements.txt)](https://snyk.io/test/github/csmcallister/fed-a11y?targetFile=requirements.txt)
 
 # Fed A11y
 
