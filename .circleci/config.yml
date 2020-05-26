@@ -20,9 +20,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: build number
-          command: echo $CIRCLE_BUILD_NUM
-      - run:
           name: setup-test-reporter
           command: |
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
@@ -56,7 +53,7 @@ jobs:
 
       - store_artifacts: # See circleci.com/docs/2.0/artifacts/ for more details.
           path: coverage.xml
-          destination: coverage
+          destination: coverage.xml
   
   deploy:
     executor: deploy-exc
@@ -67,12 +64,21 @@ jobs:
           command: |
             git push -f https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
       - run:
-          name: Post Coverage reporter
+          name: Download Last Coverage Report
           command: |
             (( JOB_NUMBER = $CIRCLE_BUILD_NUM - 1 ))
-            curl -X GET https://circleci.com/api/v2/project/gh/csmcallister/fed-a11y/$JOB_NUMBER/artifacts?circle-token=$CIRCLE_TOKEN \
-            -H 'Accept: application/json'
-  
+            curl -X GET "https://circleci.com/api/v2/project/gh/csmcallister/fed-a11y/$JOB_NUMBER/artifacts?circle-token=$CIRCLE_TOKEN" -H 'Accept: application/json' | grep -o 'https://[^"]*' | xargs wget
+      - run:
+          name: setup-coverage-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+      - run:
+          name: post-coverage-report
+          command: |
+            ./cc-test-reporter before-build
+            ./cc-test-reporter after-build --debug -t "coverage.py" --exit-code $?
+
 
 workflows:
   version: 2
