@@ -78,7 +78,15 @@ jobs:
           command: |
             ./cc-test-reporter before-build
             ./cc-test-reporter after-build --debug -t "coverage.py" --exit-code $?
-
+  
+  weekly-deploy:
+    executor: deploy-exc
+    steps:
+      - checkout
+      - run:
+          name: Deploy Master to Heroku
+          command: |
+            git push -f https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
 
 workflows:
   version: 2
@@ -101,4 +109,4 @@ workflows:
               only:
                 - master
     jobs:
-      - deploy
+      - weekly-deploy
