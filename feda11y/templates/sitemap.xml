@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
   <url>
     <loc>{{ base_url }}</loc>
-    <lastmod>2020-04-27</lastmod>
+    <lastmod>{{ last_scan_date }}</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   {%- for page in pages %}
   <url>
     <loc>{{ page }}</loc>
-    <lastmod>2020-04-27</lastmod>
+    <lastmod>{{ last_scan_date }}</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   {%- endfor -%}

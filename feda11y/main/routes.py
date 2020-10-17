@@ -63,7 +63,13 @@ def site_map():
     excludes = {'errors', 'includes', 'base', 'sitemap.xml', 'index'}
     base_url = "https://feda11y.com"
     pages = [f'{base_url}/{p}' for p in pages if p not in excludes]
-    return render_template('sitemap.xml', pages=pages, base_url=base_url)
+    last_scan_date = models.get_last_scan_date(current_app)
+    return render_template(
+        'sitemap.xml',
+        pages=pages,
+        base_url=base_url,
+        last_scan_date=last_scan_date
+    )
 
 
 def extension_handler(data, ext):
