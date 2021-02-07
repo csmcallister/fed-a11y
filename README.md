@@ -5,11 +5,11 @@
 
 # Fed A11y
 
-Automated accessibility testing of U.S. Federal Government websites.
+Automated accessibility testing of *most* U.S. Federal Government websites.
 
 ## Getting Started
 
-Following these steps will help you get started.
+If you're wanting to develop against this project, follow these steps to get started.
 
 ### Install Python
 
@@ -33,9 +33,13 @@ pip install -e .
 
 ### Get the Data
 
-[Download a snapshot of the data](https://www.feda11y.com/data) as JSON and place it at `feda11y/static/data.json`.
+[Download a snapshot of the data](https://www.feda11y.com/data) as JSON and place it at `feda11y/static/data.json`:
 
-Now make a dummy file for the historical data called `feda11y/static/hist.json` and put something like this in it:
+```bash
+wget -O feda11y/static/data.json https://www.feda11y.com/data
+```
+
+Now make a dummy file for the historical data called `feda11y/static/hist.json` and put something minimal like this in it:
 
 ```json
 [{"2020-03-09": 0.2}, {"2020-03-16": 0.3}, {"2020-03-23": 0.4}, {"2020-03-30": 0.5}]
@@ -106,9 +110,9 @@ heroku local web
 
 ## Accessibility
 
-Just like the [backend to this site](https://github.com/csmcallister/fed-a11y-scan/), we use [pa11y](https://github.com/pa11y/pa11y) to smoke test our site's accessibility. You can run these tests yourself downloading the `pa11y` or `pa11y-ci` tools and then starting the app with `flask run` to give yourself a live endpoint to test.
+Just like the [backend to this site](https://github.com/csmcallister/fed-a11y-scan/), we use [pa11y](https://github.com/pa11y/pa11y) to smoke test our site's accessibility. You can run these tests yourself downloading the `pa11y` or `pa11y-ci` tools and then starting the app with `flask run` to give yourself a live endpoint to test. Our configuration file for the a11y tests is located at [.pa11yci](https://github.com/csmcallister/fed-a11y/blob/master/.pa11yci).
 
-If you notice any issues, please let us know by [opening an issue](https://github.com/csmcallister/fed-a11y/issues).
+If you notice any issues that aren't caught by these automated tests, please let us know by [opening an issue](https://github.com/csmcallister/fed-a11y/issues).
 
 ## Contributing
 
