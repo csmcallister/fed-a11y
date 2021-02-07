@@ -74,7 +74,7 @@ jobs:
                 REPORT_URL="$(curl -X GET "https://circleci.com/api/v2/project/gh/csmcallister/fed-a11y/$JOB_NUMBER/artifacts?circle-token=$CIRCLE_TOKEN" -H 'Accept: application/json' | grep -o 'https://[^"]*')"
                 ((c=c+1))
                 if [ -n "$REPORT_URL" ]; then
-                    wget REPORT_URL
+                    wget $REPORT_URL
                     # download test reporter
                     curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
                     chmod +x ./cc-test-reporter
