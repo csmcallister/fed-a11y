@@ -9,7 +9,7 @@ We'd love your help! We want to make contributing to this project as easy and tr
 
 ## What to Contribute?!
 
-Although our backlog can be found on our [Issues Page](https://github.com/csmcallister/fed-a11y/issues), we're happy to review/discuss your prosed contributions if you open an issue.
+Although our backlog can be found on our [Issues Page](https://github.com/csmcallister/fed-a11y/issues), we're happy to review/discuss your proposed contributions if you open an issue.
 
 ## How to Contribute
 
