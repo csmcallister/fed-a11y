@@ -1,6 +1,0 @@
-{
-    "python.linting.flake8Enabled": true,
-    "python.languageServer": "Pylance",
-    "python.linting.flake8Path": "flake8",
-    "python.pythonPath": "/home/csmcallister/projects/fed-a11y/env/bin/python3"
-}
