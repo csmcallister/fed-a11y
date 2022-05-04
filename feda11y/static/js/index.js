@@ -186,8 +186,7 @@ $( document ).ready( () => {
   for (i = 0; i < labels.length; i++) {
     const roundedData = Math.round(lineData[i] * 1000) / 10;
     ariaLabel += `${labels[i]}: ${roundedData}%,`;
-
-  ariaLabel = ariaLabel.slice(0, -1) + '.';
+    ariaLabel = ariaLabel.slice(0, -1) + '.';
   }
   ariaLabel = `Line chart showing the historical percentages of US Government websites without accessibility issues: ${ariaLabel}`
   let $line = $('#line')
