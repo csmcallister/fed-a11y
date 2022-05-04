@@ -5,6 +5,7 @@ swapCanvases();
 
 document.getElementById("chart-button").onclick=function(){
   swapCanvases();
+  toggleAnnotation();
   
   if (this.innerHTML == "View Historical Compliance") {
     this.innerHTML = "View Current Compliance";
@@ -20,6 +21,15 @@ function swapCanvases(){
   } else {
     donut.style.visibility = 'visible';
     line.style.visibility = 'hidden';
+  }
+}
+
+function toggleAnnotation(){
+  var annotation = document.getElementById("chart-annotation")
+  if (annotation.style.visibility == 'visible') {
+    annotation.style.visibility = 'hidden';
+  } else {
+    annotation.style.visibility = 'visible';
   }
 }
 
