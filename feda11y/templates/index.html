@@ -6,25 +6,28 @@
 
 {% block content %}
 <section id="main-content" role="region" aria-labelledby="title">
-    <div class="container">
-      <div class="row align-items-center">
-         <div class="col text-center">
-           <header>
-             <h1 id="title">Fed A11y</h1>
-           </header>
-           <p>Automated Monitoring of the Section 508 Accessibility of {{n_domains}} US Federal Government Websites</p>
-           <button id="chart-button" class="btn" aria-label="Toggle between displaying current and historical accessibility compliance in the chart below">View Historical Compliance</button>
-         </div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col text-center">
+        <header>
+          <h1 id="title">Fed A11y</h1>
+        </header>
+        <p>Automated Monitoring of the Section 508 Accessibility of {{n_domains}} US Federal Government Websites</p>
+        <button id="chart-button" class="btn" aria-label="Toggle between displaying current and historical accessibility compliance in the chart below">View Historical Compliance</button>
       </div>
-      <div class="row">
-        <!-- <div class="col"> -->
-            <div class="container-canvas">
-                <canvas id="donut" aria-label="Donut chart showing {{percent_inaccessible}} percent of US Government websites have at least one accessibility issue. {{n_domains_without_issues}} don't have accessibility issues while {{n_domains_with_issues}} do."" role="img"></canvas>  
-                <canvas id="line" role="img"></canvas>
-            </div>
-        </div>
-      <!-- </div> -->
     </div>
+    <div class="row">
+      <div class="container-canvas">
+        <canvas id="donut" aria-label="Donut chart showing {{percent_inaccessible}} percent of US Government websites have at least one accessibility issue. {{n_domains_without_issues}} don't have accessibility issues while {{n_domains_with_issues}} do."" role="img"></canvas>  
+        <canvas id="line" role="img"></canvas>
+      </div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col text-center">
+        <p id="chart-annotation" style="visibility: hidden;">*The sharp decline in compliance starting with the 2021-06-08 scan is due to usage of updated Section 508 standards, which now include the WCAG 2.0 standards.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <script>
