@@ -8,6 +8,6 @@ setup(
     zip_safe=False,
     install_requires=[
         'Flask==1.1.1',
-        'ujson==2.0.3'
+        'ujson==5.4.0'
     ],
 )
