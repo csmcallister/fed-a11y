@@ -1,34 +1,15 @@
-FROM circleci/node:10.15.1-browsers
+FROM cimg/node:12.13.1-browsers
 
-COPY .circleci/package.json package.json
+COPY .circleci/package.json /home/circleci/package.json
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 
-RUN sudo npm install -g --unsafe-perm && npm cache clean --force
+RUN cd /home/circleci && npm install -g --unsafe-perm && npm cache clean --force
 
-RUN sudo apt-get update && sudo apt-get install -y build-essential checkinstall
-
-RUN sudo apt-get install -y \
-    libreadline-gplv2-dev \
-    libncursesw5-dev \
-    libssl-dev \
-    libsqlite3-dev \
-    tk-dev \
-    libgdbm-dev \
-    libc6-dev \
-    libbz2-dev \
-    libffi-dev \
-    liblzma-dev
-    
-RUN cd /usr/src 
-
-RUN sudo wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tgz 
-
-RUN sudo tar xzf Python-3.7.3.tgz && sudo rm Python-3.7.3.tgz
-
-# altinstall used to prevent replacing the default python binary file /usr/bin/python
-RUN cd Python-3.7.3 && sudo ./configure && sudo make altinstall
-
-WORKDIR /workspace
-
-RUN sudo python3.7 -m pip install --upgrade pip && sudo rm -rf Python-3.7.3
+RUN curl https://pyenv.run | bash
+RUN echo 'PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+RUN echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+RUN echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+RUN . ~/.bashrc
+RUN $HOME/.pyenv/bin/pyenv install 3.11.1
+RUN $HOME/.pyenv/bin/pyenv global 3.11.1
