@@ -13,7 +13,7 @@ If you're wanting to develop against this project, follow these steps to get sta
 
 ### Install Python
 
-This project uses Python 3.7.3, although other versions >= 3.5 should be fine. You can install Python from [here](https://www.python.org/downloads/), although using a system utility (e.g. homebrew for OSX) is fine as well.
+This project uses Python 3.11, although other versions should be fine. You can install Python from [here](https://www.python.org/downloads/), although using another utility (e.g. `pyenv` or homebrew, for OSX) is fine as well.
 
 Next, activate your python virtual environment:
 
@@ -22,14 +22,6 @@ python -m venv env
 source env/bin/activate
 pip install -r requirements.txt
 ```
-
-Next, install this repo as a package:
-
-```bash
-pip install -e .
-```
-
->This tells `pip` to find `setup.py` in the current directory and install it in editable or development mode. Editable mode means that as you make changes to your local code, you’ll only need to re-install if you change the metadata about the project, such as its dependencies.
 
 ### Get the Data
 
@@ -75,7 +67,7 @@ SECRET_KEY="somethingsupersecret"
 Now you can start the app with:
 
 ```bash
-flask run
+flask --app main.py run
 ```
 
 which should emit something like:

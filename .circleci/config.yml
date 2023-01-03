@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   heroku: circleci/heroku@1.0.1
-  python: circleci/python@0.2.1
+  python: circleci/python@2.1.1
 
 executors:
   test-and-lint-exc:
@@ -10,7 +10,7 @@ executors:
       - image: csmcallister/node-pa11y-python
   deploy-exc:
     docker:
-      - image: circleci/python:3.7.4
+      - image: circleci/python:3.11.0a3
 
 jobs:
 
@@ -24,34 +24,32 @@ jobs:
           command: |
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
+
       - run:
           name: install-deps
           command: |
-            sudo python3.7 -m venv env
-            . env/bin/activate
-            sudo pip install -r requirements.txt
-            sudo pip install -e .
+            /home/circleci/.pyenv/shims/python -m pip install -r requirements.txt
             printenv > .env
       
       - run:
           name: flake8
           command: |
-            flake8
+            /home/circleci/.pyenv/shims/python -m flake8
 
       - run:
           name: test
           command: |
             ./cc-test-reporter before-build
-            sudo coverage run -m pytest
-            sudo coverage xml
+            /home/circleci/.pyenv/shims/python -m coverage run -m pytest
+            /home/circleci/.pyenv/shims/python -m coverage xml
             ./cc-test-reporter after-build --debug -t "coverage.py" --exit-code $?
 
       - run:
           name: pa11y
           command: |
-            flask run & sleep 5 && sudo /node_modules/.bin/pa11y-ci --config .pa11yci
+            /home/circleci/.pyenv/shims/python -m flask run & sleep 5 && /home/circleci/node_modules/.bin/pa11y-ci --config .pa11yci
 
-      - store_artifacts: # See circleci.com/docs/2.0/artifacts/ for more details.
+      - store_artifacts:
           path: coverage.xml
           destination: coverage.xml
   
