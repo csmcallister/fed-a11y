@@ -37,7 +37,7 @@ Now make a dummy file for the historical data called `feda11y/static/hist.json` 
 [{"2020-03-09": 0.2}, {"2020-03-16": 0.3}, {"2020-03-23": 0.4}, {"2020-03-30": 0.5}]
 ```
 
-These files are normally pulled from cloud storage with each deploy, so it's imperative you recreate them locally before continuing.
+>These files are normally pulled from cloud storage with each deploy, so it's imperative you recreate them locally before continuing.
 
 ### Run the Tests
 
@@ -70,19 +70,9 @@ Now you can start the app with:
 flask --app main.py run
 ```
 
-which should emit something like:
+>Alternatively, you can use a gunicorn with `gunicorn main:app`
 
-```bash
- * Serving Flask app "main.py" (lazy loading)
- * Environment: development
- * Debug mode: on
- * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
- * Restarting with stat
- * Debugger is active!
- * Debugger PIN: 123-456-789
-```
-
-Go to `http://127.0.0.1:5000/` and check it out.
+Go to `http://127.0.0.1:5000/` and check it out (use port 8000 if you used `gunicorn`).
 
 ## Deploy
 
