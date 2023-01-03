@@ -11,4 +11,4 @@ def before_request():
         return redirect(url, code=301)
 
 
-from feda11y.main import routes  # noqa: F401
+from feda11y.main import routes  # noqa: F401, E402
